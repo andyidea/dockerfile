@@ -6,4 +6,4 @@ RUN cd /src && git submodule update --init --recursive
 VOLUME ["/src"]
 WORKDIR /src
 ENTRYPOINT ["git"]
-CMD ["pull"]
+CMD ["pull", "&&", "git", "submodule", "update"]
