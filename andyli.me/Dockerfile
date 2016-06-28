@@ -5,5 +5,4 @@ RUN git clone https://github.com/andyidea/andyli.me.git /src
 RUN cd /src && git submodule update --init --recursive
 VOLUME ["/src"]
 WORKDIR /src
-ENTRYPOINT ["git"]
-CMD ["pull"]
+CMD ["sh", "run.sh"]
