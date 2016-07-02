@@ -16,7 +16,12 @@ RUN apt-get update && apt-get install --no-install-recommends -y bzr
 
 RUN go get github.com/spf13/hugo
 
-VOLUME ["/var/www/home"]
+RUN git clone https://github.com/andyidea/blog.andyli.me.git /blog
 
-ENTRYPOINT ["hugo"]
-CMD ["-s", "/src", "-d", "/var/www/home"]
+RUN cd /blog && git submodule update --init --recursive
+
+WORKDIR /blog
+
+VOLUME ["/var/www/blog"]
+
+CMD ["sh", "run.sh"]
